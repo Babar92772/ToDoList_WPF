@@ -23,16 +23,15 @@ namespace TrelloWPF
         public ToDoList()
         {
             InitializeComponent();
-            List<Tasks> listTasks = new List<Tasks>();
+            List<Tasks> listTasksToDo = new List<Tasks>();
+            List<Tasks> listTasksInProgress = new List<Tasks>();
+            List<Tasks> listTasksDone = new List<Tasks>();
 
-            Tasks tasks = new Tasks();
-            tasks.DeadLine = DateTime.Now;
-            tasks.Note = "testnote";
-
-            listTasks.Add(tasks);
-
-
-            lv_inProgress.ItemsSource = listTasks;
+            //Tasks tasks = new Tasks();
+            //tasks.DeadLine = DateTime.Now;
+            //tasks.Note = "testnote";
+            //listTasks.Add(tasks);
+            //lv_inProgress.ItemsSource = listTasks;
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
@@ -69,18 +68,21 @@ namespace TrelloWPF
                 tasks = this.lv_todo.SelectedItem as Tasks;
                 Window window_add = new EditTask(tasks);
                 window_add.ShowDialog();
+                this.lv_todo.Items.Refresh();
             }
             else if (this.lv_inProgress.SelectedIndex != -1)
             {
                 tasks = this.lv_inProgress.SelectedItem as Tasks;
                 Window window_add = new EditTask(tasks);
                 window_add.ShowDialog();
+                this.lv_inProgress.Items.Refresh();
             }
             else if (this.lv_done.SelectedIndex != -1)
             {
                 tasks = this.lv_done.SelectedItem as Tasks;
                 Window window_add = new EditTask(tasks);
                 window_add.ShowDialog();
+                this.lv_done.Items.Refresh();
             }
             else
             {

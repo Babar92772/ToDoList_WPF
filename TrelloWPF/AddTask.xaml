@@ -16,7 +16,7 @@
         <Label Content="Note :" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top" Width="93"/>
         <Button Click="Add_Click" Content="Add" HorizontalAlignment="Left" Margin="10,435,0,0" VerticalAlignment="Top" Width="130" Height="30"/>
         <Button Click="Cancel_Click" Content="Cancel" HorizontalAlignment="Left" Margin="353,435,0,0" VerticalAlignment="Top" Width="129" Height="30"/>
-        <TextBox Name="tb_note" HorizontalAlignment="Left" Height="327" Margin="10,103,0,0" TextWrapping="WrapWithOverflow" VerticalAlignment="Top" Width="472"/>
+        <TextBox Name="tb_note" Height="327" Margin="10,103,0,0" TextWrapping="Wrap" Width="472" HorizontalContentAlignment="Stretch" AcceptsReturn="True" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
