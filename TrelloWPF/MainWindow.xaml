@@ -1,0 +1,14 @@
+﻿<Window x:Class="TrelloWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TrelloWPF"
+        mc:Ignorable="d"
+        Title="ToDo List" Height="350" Width="350" FontSize="20">
+    <Grid>
+        <Button Click="SignIn_Click" Content="Sign In" Margin="96,70,96,0" VerticalAlignment="Top" Height="60"/>
+        <Button Click="SignUp_Click" Content="SignUp" HorizontalAlignment="Left" Margin="96,180,96,70" VerticalAlignment="Top" Width="150" Height="60"/>
+
+    </Grid>
+</Window>

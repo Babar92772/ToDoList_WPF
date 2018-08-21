@@ -1,0 +1,17 @@
+﻿<Window x:Class="TrelloWPF.EditTask"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TrelloWPF"
+        mc:Ignorable="d"
+        Title="EditTask" Height="500" Width="500">
+    <Grid>
+        <Label Content="DeadLine :" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.684,1.753" Height="34" Width="93"/>
+        <DatePicker Name="dp_deadline" HorizontalAlignment="Left" Margin="108,12,0,0" VerticalAlignment="Top" Width="203" Height="32"/>
+        <Label Content="Note :" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top" Width="93"/>
+        <Button Click="Update_Click" Content="Edit" HorizontalAlignment="Left" Margin="10,435,0,0" VerticalAlignment="Top" Width="130" Height="30"/>
+        <Button Click="Cancel_Click" Content="Cancel" HorizontalAlignment="Left" Margin="353,435,0,0" VerticalAlignment="Top" Width="129" Height="30"/>
+        <TextBox Name="tb_note" HorizontalAlignment="Left" Height="327" Margin="10,103,0,0" TextWrapping="WrapWithOverflow" VerticalAlignment="Top" Width="472"/>
+    </Grid>
+</Window>
