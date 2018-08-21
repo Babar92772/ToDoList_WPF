@@ -10,7 +10,7 @@ namespace TrelloWPF.Models
     {
         public int Id { get; set; }
         public string Content { get; set; }
-        public DateTime Deadline { get; set; }
+        public DateTime CreateDate { get; set; }
         public virtual int IdUser { get; set; }
         public virtual int IdTask { get; set; }
 

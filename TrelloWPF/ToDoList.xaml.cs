@@ -20,44 +20,44 @@ namespace TrelloWPF
     /// </summary>
     public partial class ToDoList : Window
     {
+        private List<Tasks> listTasksToDo = new List<Tasks>();
+        private List<Tasks> listTasksInProgress = new List<Tasks>();
+        private List<Tasks> listTasksDone = new List<Tasks>();
+
         public ToDoList()
         {
             InitializeComponent();
-            List<Tasks> listTasksToDo = new List<Tasks>();
-            List<Tasks> listTasksInProgress = new List<Tasks>();
-            List<Tasks> listTasksDone = new List<Tasks>();
-
-            //Tasks tasks = new Tasks();
-            //tasks.DeadLine = DateTime.Now;
-            //tasks.Note = "testnote";
-            //listTasks.Add(tasks);
-            //lv_inProgress.ItemsSource = listTasks;
+            lv_todo.ItemsSource = listTasksToDo;
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            Window window_add = new AddTask(this.lv_todo);
+            Window window_add = new AddTask(listTasksToDo);
             window_add.ShowDialog();
+            lv_todo.Items.Refresh();
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
             if (this.lv_todo.SelectedIndex != -1)
             {
-                this.lv_todo.Items.Remove(this.lv_todo.SelectedItem);
+                this.listTasksToDo.RemoveAt(this.lv_todo.SelectedIndex);
+                this.lv_todo.Items.Refresh();
             }
             else if(this.lv_inProgress.SelectedIndex != -1)
             {
-                this.lv_inProgress.Items.Remove(this.lv_inProgress.SelectedItem);
+                this.listTasksInProgress.RemoveAt(this.lv_inProgress.SelectedIndex);
+                this.lv_inProgress.Items.Refresh();
             }
             else if (this.lv_done.SelectedIndex != -1)
             {
-                this.lv_done.Items.Remove(this.lv_done.SelectedItem);
+                this.listTasksDone.RemoveAt(this.lv_done.SelectedIndex);
+                this.lv_done.Items.Refresh();
             }
             else
             {
                 MessageBox.Show("Select a task before deleting");
-            }     
+            }           
         }
 
         private void Update_Click(object sender, RoutedEventArgs e)
@@ -65,21 +65,21 @@ namespace TrelloWPF
             Tasks tasks;
             if (this.lv_todo.SelectedIndex != -1)
             {
-                tasks = this.lv_todo.SelectedItem as Tasks;
+                tasks = this.listTasksToDo[this.lv_todo.SelectedIndex];
                 Window window_add = new EditTask(tasks);
                 window_add.ShowDialog();
                 this.lv_todo.Items.Refresh();
             }
             else if (this.lv_inProgress.SelectedIndex != -1)
             {
-                tasks = this.lv_inProgress.SelectedItem as Tasks;
+                tasks = this.listTasksInProgress[this.lv_inProgress.SelectedIndex];
                 Window window_add = new EditTask(tasks);
                 window_add.ShowDialog();
                 this.lv_inProgress.Items.Refresh();
             }
             else if (this.lv_done.SelectedIndex != -1)
             {
-                tasks = this.lv_done.SelectedItem as Tasks;
+                tasks = this.listTasksDone[this.lv_done.SelectedIndex];
                 Window window_add = new EditTask(tasks);
                 window_add.ShowDialog();
                 this.lv_done.Items.Refresh();

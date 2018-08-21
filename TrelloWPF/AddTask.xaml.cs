@@ -20,21 +20,14 @@ namespace TrelloWPF
     /// </summary>
     public partial class AddTask : Window
     {
-        private ListView Lv_todo;
+        private List<Tasks> ListTasksToDo;
 
-        public AddTask(ListView lv_todo)
+        public AddTask(List<Tasks> tasks)
         {
             InitializeComponent();
-            this.Lv_todo = lv_todo;
+            this.ListTasksToDo = tasks;
             this.dp_deadline.Text = DateTime.Now.ToShortDateString();
             this.tb_note.Text = "One task";
-        }
-
-        public AddTask(Tasks tasks)
-        {
-            InitializeComponent();
-            this.dp_deadline.Text = tasks.DeadLine.ToShortDateString();
-            this.tb_note.Text = tasks.Note;
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
@@ -45,9 +38,8 @@ namespace TrelloWPF
                 Note = this.tb_note.Text,
                 DeadLine = this.dp_deadline.SelectedDate.Value
             };
-            Lv_todo.Items.Add(tasks);
+            ListTasksToDo.Add(tasks);
             this.Close();
-            //MessageBox.Show(tasks.Note + " / " + tasks.TaskState + " / " + tasks.DeadLine);
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
