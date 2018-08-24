@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Diginamic\Desktop\ToDoList\ToDoList\TrelloWPF\TrelloWPF\obj\Debug\
+C:\Users\Diginamic\Desktop\ToDoList_WPF\TrelloWPF\obj\Debug\
 TrelloWPF
 none
 false
 DEBUG;TRACE
-C:\Users\Diginamic\Desktop\ToDoList\ToDoList\TrelloWPF\TrelloWPF\App.xaml
-5-185582440
+C:\Users\Diginamic\Desktop\ToDoList_WPF\TrelloWPF\App.xaml
+81033291839
 
-15587838452
-131569487696
-AddTask.xaml;EditTask.xaml;MainWindow.xaml;style.xaml;ToDoList.xaml;
+19-452825321
+71-280561384
+AddTask.xaml;Connection.xaml;EditTask.xaml;MainWindow.xaml;style.xaml;ToDoList.xaml;UserControls\SignIn.xaml;UserControls\SignUp.xaml;
 
-False
+True
 

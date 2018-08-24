@@ -12,30 +12,32 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using TrelloWPF.UserControls;
 
-namespace TrelloWPF
+namespace TrelloWPF.UserControls
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for SignIn.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SignIn : UserControl
     {
-        public MainWindow()
+        public SignIn()
         {
             InitializeComponent();
         }
 
         private void SignIn_Click(object sender, RoutedEventArgs e)
         {
-            Window Window_SignIn = new Connection("SignIn");
-            Window_SignIn.ShowDialog();
+            var myWindow = Window.GetWindow(this);
+            Window window_ToDoList = new ToDoList();
+            
+            myWindow.Close();
+            window_ToDoList.ShowDialog();
         }
 
-        private void SignUp_Click(object sender, RoutedEventArgs e)
+        private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            Window Window_SignUp = new Connection("SignUp");
-            Window_SignUp.ShowDialog();
+            var myWindow = Window.GetWindow(this);
+            myWindow.Close();
         }
     }
 }
