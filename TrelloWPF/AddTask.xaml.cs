@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using TrelloWPF.Models;
+using ToDoListDLL;
 
 namespace TrelloWPF
 {
@@ -26,7 +26,7 @@ namespace TrelloWPF
         {
             InitializeComponent();
             this.ListTasksToDo = tasks;
-            this.dp_deadline.Text = DateTime.Now.ToShortDateString();
+            this.dp_deadline.Text = DateTime.Now.ToShortDateString(); 
             this.tb_note.Text = "One task";
         }
 
@@ -36,7 +36,8 @@ namespace TrelloWPF
             {
                 TaskState = "todo",
                 Note = this.tb_note.Text,
-                DeadLine = this.dp_deadline.SelectedDate.Value
+                DeadLine = this.dp_deadline.SelectedDate.Value,
+                CreateDate = DateTime.Now
             };
             ListTasksToDo.Add(tasks);
             this.Close();

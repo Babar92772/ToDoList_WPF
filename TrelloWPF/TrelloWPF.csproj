@@ -58,6 +58,9 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="ToDoListDLL">
+      <HintPath>..\..\..\Downloads\ToDoListDLL.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -77,9 +80,7 @@
     <Compile Include="EditTask.xaml.cs">
       <DependentUpon>EditTask.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\Comments.cs" />
-    <Compile Include="Models\Tasks.cs" />
-    <Compile Include="Models\Users.cs" />
+    <Compile Include="Session.cs" />
     <Compile Include="ToDoList.xaml.cs">
       <DependentUpon>ToDoList.xaml</DependentUpon>
     </Compile>

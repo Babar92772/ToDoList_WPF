@@ -13,7 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using TrelloWPF.Models;
+using ToDoListDLL;
 
 namespace TrelloWPF
 {
@@ -35,8 +35,8 @@ namespace TrelloWPF
             //    task.
             //}
 
-            //lv_todo.ItemsSource = DB.GetTasks();
-            lv_todo.ItemsSource = listTasksToDo;
+            lv_todo.ItemsSource = DB.GetTasks();
+            //lv_todo.ItemsSource = listTasksToDo;
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)

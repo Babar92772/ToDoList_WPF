@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ToDoListDLL;
 
 namespace TrelloWPF.UserControls
 {
@@ -28,8 +29,13 @@ namespace TrelloWPF.UserControls
         private void SignUp_Click(object sender, RoutedEventArgs e)
         {
             var myWindow = Window.GetWindow(this);
-            Window window_ToDoList = new ToDoList();
 
+
+
+
+
+
+            Window window_ToDoList = new ToDoList();
             myWindow.Close();
             window_ToDoList.ShowDialog();
         }
