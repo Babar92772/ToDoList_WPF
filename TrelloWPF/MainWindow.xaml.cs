@@ -28,8 +28,17 @@ namespace TrelloWPF
 
         private void SignIn_Click(object sender, RoutedEventArgs e)
         {
-            Window Window_SignIn = new Connection("SignIn");
-            Window_SignIn.ShowDialog();
+            if (Session.CurrentUser != null)
+            {
+                Window window_toDoList = new ToDoList();
+                window_toDoList.ShowDialog();
+            }
+            else
+            {
+                Window Window_SignIn = new Connection("SignIn");
+                Window_SignIn.ShowDialog();
+            }
+
         }
 
         private void SignUp_Click(object sender, RoutedEventArgs e)

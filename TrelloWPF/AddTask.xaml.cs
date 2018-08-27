@@ -20,12 +20,9 @@ namespace TrelloWPF
     /// </summary>
     public partial class AddTask : Window
     {
-        private List<Tasks> ListTasksToDo;
-
-        public AddTask(List<Tasks> tasks)
+        public AddTask()
         {
             InitializeComponent();
-            this.ListTasksToDo = tasks;
             this.dp_deadline.Text = DateTime.Now.ToShortDateString(); 
             this.tb_note.Text = "One task";
         }
@@ -39,12 +36,12 @@ namespace TrelloWPF
                 IDUserCreator = Session.CurrentUser.ID,
                 Note = this.tb_note.Text,
                 TaskState = "todo",
-                Users = Session.CurrentUser,
                 Users1 = new List<Users>(),
                 CreateDate = DateTime.Now,
             };
 
             DB.AddTask(tasks);
+
             //Tasks tasks = new Tasks
             //{
             //    TaskState = "todo",

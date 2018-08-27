@@ -30,15 +30,12 @@ namespace TrelloWPF
         public ToDoList()
         {
             InitializeComponent();
-            RefreshList();
-            lv_todo.ItemsSource = listTasksToDo;
-            lv_inProgress.ItemsSource = listTasksInProgress;
-            lv_done.ItemsSource = listTasksDone;
+            this.RefreshList();    
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            Window window_add = new AddTask(listTasksToDo);
+            Window window_add = new AddTask();
             window_add.ShowDialog();
             RefreshList();
         }
@@ -47,23 +44,26 @@ namespace TrelloWPF
         {
             if (this.lv_todo.SelectedIndex != -1)
             {
-                this.listTasksToDo.RemoveAt(this.lv_todo.SelectedIndex);
+                Tasks tasks = this.lv_todo.SelectedItem as Tasks;
+                DB.DeleteTask(tasks.ID);
+                RefreshList();
                 this.lv_todo.Items.Refresh();
             }
             else if(this.lv_inProgress.SelectedIndex != -1)
             {
-                this.listTasksInProgress.RemoveAt(this.lv_inProgress.SelectedIndex);
+                RefreshList();
                 this.lv_inProgress.Items.Refresh();
             }
             else if (this.lv_done.SelectedIndex != -1)
             {
-                this.listTasksDone.RemoveAt(this.lv_done.SelectedIndex);
+                RefreshList();
                 this.lv_done.Items.Refresh();
             }
             else
             {
                 MessageBox.Show("Select a task before deleting");
-            }           
+            }
+            
         }
 
         private void Update_Click(object sender, RoutedEventArgs e)
@@ -74,6 +74,7 @@ namespace TrelloWPF
                 tasks = this.listTasksToDo[this.lv_todo.SelectedIndex];
                 Window window_add = new EditTask(tasks);
                 window_add.ShowDialog();
+                RefreshList();
                 this.lv_todo.Items.Refresh();
             }
             else if (this.lv_inProgress.SelectedIndex != -1)
@@ -81,6 +82,7 @@ namespace TrelloWPF
                 tasks = this.listTasksInProgress[this.lv_inProgress.SelectedIndex];
                 Window window_add = new EditTask(tasks);
                 window_add.ShowDialog();
+                RefreshList();
                 this.lv_inProgress.Items.Refresh();
             }
             else if (this.lv_done.SelectedIndex != -1)
@@ -88,6 +90,7 @@ namespace TrelloWPF
                 tasks = this.listTasksDone[this.lv_done.SelectedIndex];
                 Window window_add = new EditTask(tasks);
                 window_add.ShowDialog();
+                RefreshList();
                 this.lv_done.Items.Refresh();
             }
             else
@@ -98,6 +101,17 @@ namespace TrelloWPF
 
         private void RefreshList()
         {
+            this.lv_todo.ItemsSource = null;
+            this.lv_inProgress.ItemsSource = null;
+            this.lv_done.ItemsSource = null;
+            this.allTasks.Clear();
+            this.listTasksToDo.Clear();
+            this.lv_todo.Items.Clear();
+            this.listTasksInProgress.Clear();
+            this.lv_inProgress.Items.Clear();
+            this.listTasksDone.Clear();
+            this.lv_done.Items.Clear();
+
             allTasks = DB.GetTasks().ToList();
             foreach (Tasks tasks in allTasks)
             {
@@ -117,6 +131,9 @@ namespace TrelloWPF
                     }
                 }
             }
+            lv_todo.ItemsSource = listTasksToDo;
+            lv_inProgress.ItemsSource = listTasksInProgress;
+            lv_done.ItemsSource = listTasksDone;
         }
     }
 }

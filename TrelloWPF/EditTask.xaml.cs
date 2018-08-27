@@ -26,6 +26,7 @@ namespace TrelloWPF
         {
             InitializeComponent();
             this.tasks = tasks;
+            this.dp_deadline.Text = DateTime.Now.ToShortDateString();
             this.dp_deadline.Text = tasks.DeadLine.ToString();
             this.tb_note.Text = tasks.Note;
         }
@@ -34,6 +35,7 @@ namespace TrelloWPF
         {
             this.tasks.DeadLine = Convert.ToDateTime(this.dp_deadline.Text);
             this.tasks.Note = this.tb_note.Text;
+            DB.EditTask(this.tasks);
             this.Close();
         }
 

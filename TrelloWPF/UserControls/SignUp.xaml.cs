@@ -32,9 +32,6 @@ namespace TrelloWPF.UserControls
 
 
 
-
-
-
             Window window_ToDoList = new ToDoList();
             myWindow.Close();
             window_ToDoList.ShowDialog();
