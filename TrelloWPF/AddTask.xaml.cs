@@ -34,12 +34,25 @@ namespace TrelloWPF
         {
             Tasks tasks = new Tasks
             {
-                TaskState = "todo",
+                Comments = new List<Comments>(),
+                DeadLine = this.dp_deadline.SelectedDate,
+                IDUserCreator = Session.CurrentUser.ID,
                 Note = this.tb_note.Text,
-                DeadLine = this.dp_deadline.SelectedDate.Value,
-                CreateDate = DateTime.Now
+                TaskState = "todo",
+                Users = Session.CurrentUser,
+                Users1 = new List<Users>(),
+                CreateDate = DateTime.Now,
             };
-            ListTasksToDo.Add(tasks);
+
+            DB.AddTask(tasks);
+            //Tasks tasks = new Tasks
+            //{
+            //    TaskState = "todo",
+            //    Note = this.tb_note.Text,
+            //    DeadLine = this.dp_deadline.SelectedDate.Value,
+            //    CreateDate = DateTime.Now
+            //};
+            //ListTasksToDo.Add(tasks);
             this.Close();
         }
 

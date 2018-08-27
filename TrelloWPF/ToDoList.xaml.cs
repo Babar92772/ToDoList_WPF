@@ -22,6 +22,7 @@ namespace TrelloWPF
     /// </summary>
     public partial class ToDoList : Window
     {
+        private List<Tasks> allTasks = new List<Tasks>();
         private List<Tasks> listTasksToDo = new List<Tasks>();
         private List<Tasks> listTasksInProgress = new List<Tasks>();
         private List<Tasks> listTasksDone = new List<Tasks>();
@@ -29,21 +30,17 @@ namespace TrelloWPF
         public ToDoList()
         {
             InitializeComponent();
-            //IEnumerable<object> allTasks = DB.GetTasks();
-            //foreach (Task task in allTasks)
-            //{
-            //    task.
-            //}
-
-            lv_todo.ItemsSource = DB.GetTasks();
-            //lv_todo.ItemsSource = listTasksToDo;
+            RefreshList();
+            lv_todo.ItemsSource = listTasksToDo;
+            lv_inProgress.ItemsSource = listTasksInProgress;
+            lv_done.ItemsSource = listTasksDone;
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
             Window window_add = new AddTask(listTasksToDo);
             window_add.ShowDialog();
-            lv_todo.Items.Refresh();
+            RefreshList();
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
@@ -96,6 +93,29 @@ namespace TrelloWPF
             else
             {
                 MessageBox.Show("Select a task before editing");
+            }
+        }
+
+        private void RefreshList()
+        {
+            allTasks = DB.GetTasks().ToList();
+            foreach (Tasks tasks in allTasks)
+            {
+                if (Session.CurrentUser.ID == tasks.IDUserCreator)
+                {   
+                    if (tasks.TaskState == "todo")
+                    {
+                        this.listTasksToDo.Add(tasks);
+                    }
+                    else if (tasks.TaskState == "progress")
+                    {
+                        this.listTasksInProgress.Add(tasks);
+                    }
+                    else if (tasks.TaskState == "done")
+                    {
+                        this.listTasksDone.Add(tasks);
+                    }
+                }
             }
         }
     }

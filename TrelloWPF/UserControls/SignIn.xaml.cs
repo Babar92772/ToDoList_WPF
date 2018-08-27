@@ -37,6 +37,7 @@ namespace TrelloWPF.UserControls
 
             if (users != null)
             {
+                Session.CurrentUser = users;
                 Window window_ToDoList = new ToDoList();
                 myWindow.Close();
                 window_ToDoList.ShowDialog();
