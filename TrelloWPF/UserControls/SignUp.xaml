@@ -16,6 +16,6 @@
         <Button Click="SignUp_Click" Content="Sign Up" HorizontalAlignment="Left" Margin="2,347,0,0" VerticalAlignment="Top" Width="120" Height="35"/>
         <Button Click="Cancel_Click" Content="Cancel" HorizontalAlignment="Left" Margin="299,347,0,0" VerticalAlignment="Top" Width="125" Height="35"/>
         <Label Content="Pseudo :" HorizontalAlignment="Left" Margin="10,93,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <TextBox HorizontalAlignment="Left" Height="35" Margin="2,127,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="430"/>
+        <TextBox Name="tb_pseudo" HorizontalAlignment="Left" Height="35" Margin="2,127,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="430" FontSize="18"/>
     </Grid>
 </UserControl>

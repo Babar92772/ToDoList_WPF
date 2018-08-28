@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,11 +21,13 @@ namespace TrelloWPF
     /// </summary>
     public partial class AddTask : Window
     {
-        public AddTask()
+        private ObservableCollection<Tasks> _listTasksToDo;
+        public AddTask(ObservableCollection<Tasks> tasks)
         {
             InitializeComponent();
             this.dp_deadline.Text = DateTime.Now.ToShortDateString(); 
             this.tb_note.Text = "One task";
+            this._listTasksToDo = tasks;
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
@@ -41,7 +44,7 @@ namespace TrelloWPF
             };
 
             DB.AddTask(tasks);
-
+            this._listTasksToDo.Add(tasks);
             //Tasks tasks = new Tasks
             //{
             //    TaskState = "todo",

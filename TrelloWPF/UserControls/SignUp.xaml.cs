@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -30,11 +31,23 @@ namespace TrelloWPF.UserControls
         {
             var myWindow = Window.GetWindow(this);
 
-
-
-            Window window_ToDoList = new ToDoList();
-            myWindow.Close();
-            window_ToDoList.ShowDialog();
+            if (tb_password1.Text == tb_password2.Text && tb_mail.Text != "" && tb_pseudo.Text != "")
+            {
+                DB.AddUser(tb_pseudo.Text, tb_mail.Text, tb_password1.Text);
+                Thread.Sleep(300);
+                Users users = DB.GetCurrentUser(tb_pseudo.Text, tb_password1.Text) ;
+                if (users != null)
+                {
+                    Session.CurrentUser = users;
+                    Window window_ToDoList = new ToDoList();
+                    myWindow.Close();
+                    window_ToDoList.ShowDialog();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Error with values");
+            }      
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)

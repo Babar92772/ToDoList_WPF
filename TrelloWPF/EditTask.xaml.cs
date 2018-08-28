@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,14 +22,17 @@ namespace TrelloWPF
     public partial class EditTask : Window
     {
         public Tasks tasks;
+        private ObservableCollection<Tasks> _OCTasks;
+        private int _position;
 
-        public EditTask(Tasks tasks)
+        public EditTask(Tasks tasks, ObservableCollection<Tasks> OCtasks)
         {
             InitializeComponent();
             this.tasks = tasks;
-            this.dp_deadline.Text = DateTime.Now.ToShortDateString();
             this.dp_deadline.Text = tasks.DeadLine.ToString();
             this.tb_note.Text = tasks.Note;
+            this._OCTasks = OCtasks;
+            this._position = this._OCTasks.IndexOf(tasks);
         }
 
         private void Update_Click(object sender, RoutedEventArgs e)
@@ -36,6 +40,7 @@ namespace TrelloWPF
             this.tasks.DeadLine = Convert.ToDateTime(this.dp_deadline.Text);
             this.tasks.Note = this.tb_note.Text;
             DB.EditTask(this.tasks);
+            this._OCTasks[this._position] = tasks;
             this.Close();
         }
 
