@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="ToDo List" Height="350" Width="350" FontSize="20">
     <Grid Name="Grid_Main">
-        <Button Click="SignIn_Click" Content="Sign In" Margin="96,70,96,0" VerticalAlignment="Top" Height="60"/>
-        <Button Click="SignUp_Click" Content="SignUp" HorizontalAlignment="Left" Margin="96,180,96,70" VerticalAlignment="Top" Width="150" Height="60"/>
+        <Button Click="SignIn_Click" Content="Sign In" Margin="96,70,96,0" VerticalAlignment="Top" Width="149" Height="60"/>
+        <Button Click="SignUp_Click" Content="Sign Up" HorizontalAlignment="Left" Margin="96,180,96,70" VerticalAlignment="Top" Width="149" Height="60"/>
     </Grid>
 </Window>

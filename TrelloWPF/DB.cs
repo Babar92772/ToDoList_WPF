@@ -38,10 +38,12 @@ namespace TrelloWPF
 
         static public async void AddUser(string pseudo, string mail, string password)
         {
-            Users users = new Users();
-            users.Pseudo = pseudo;
-            users.Mail = mail;
-            users.Pwd = password;
+            Users users = new Users
+            {
+                Pseudo = pseudo,
+                Mail = mail,
+                Pwd = password
+            };
 
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri(Uri);
@@ -52,8 +54,10 @@ namespace TrelloWPF
 
         static public IEnumerable<Tasks> GetTasks()
         {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri(Uri);         
+            HttpClient client = new HttpClient
+            {
+                BaseAddress = new Uri(Uri)
+            };
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             HttpResponseMessage response = client.GetAsync("api/TaskApi/All").Result;
@@ -69,8 +73,10 @@ namespace TrelloWPF
 
         static public async void AddTask(Tasks tasks)
         {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri(Uri);
+            HttpClient client = new HttpClient
+            {
+                BaseAddress = new Uri(Uri)
+            };
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             
             StringContent content = new StringContent(JsonConvert.SerializeObject(tasks), Encoding.UTF8, "application/json");
@@ -84,8 +90,10 @@ namespace TrelloWPF
 
         static public void EditTask(Tasks tasks)
         {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri(Uri);
+            HttpClient client = new HttpClient
+            {
+                BaseAddress = new Uri(Uri)
+            };
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             var response = client.PutAsJsonAsync("api/TaskApi/EDIT/%7Btask%7D", tasks);
@@ -93,8 +101,10 @@ namespace TrelloWPF
 
         static public void DeleteTask(int id)
         {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri(Uri);
+            HttpClient client = new HttpClient
+            {
+                BaseAddress = new Uri(Uri)
+            };
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             var response = client.DeleteAsync($"api/TaskApi/DEL/{id}");

@@ -45,14 +45,6 @@ namespace TrelloWPF
 
             DB.AddTask(tasks);
             this._listTasksToDo.Add(tasks);
-            //Tasks tasks = new Tasks
-            //{
-            //    TaskState = "todo",
-            //    Note = this.tb_note.Text,
-            //    DeadLine = this.dp_deadline.SelectedDate.Value,
-            //    CreateDate = DateTime.Now
-            //};
-            //ListTasksToDo.Add(tasks);
             this.Close();
         }
 
