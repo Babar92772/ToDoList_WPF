@@ -32,7 +32,7 @@ namespace TrelloWPF.UserControls
         {
             var myWindow = Window.GetWindow(this);
             var identifiant = this.tb_mail.Text;
-            var pwd = this.tb_password1.Text;
+            var pwd = this.tb_password1.Password;
             Users users = DB.GetCurrentUser(identifiant, pwd);
 
             if (users != null)

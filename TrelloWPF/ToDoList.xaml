@@ -3,43 +3,48 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:dd="urn:gong-wpf-dragdrop"
         xmlns:local="clr-namespace:TrelloWPF"
         mc:Ignorable="d"
-        Title="ToDoList" Height="510" Width="815">
+        Title="ToDoList" Height="600" Width="1200">
     <Grid>
-        <Label Content="TODO" HorizontalAlignment="Left" Margin="69,10,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
-        <ListView Name="lv_todo" HorizontalAlignment="Left" Height="360" Margin="10,49,0,0" VerticalAlignment="Top" Width="190" SelectionMode="Single">
+        <Label Content="TODO" HorizontalAlignment="Left" Margin="173,10,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
+        <ListView dd:DragDrop.IsDragSource="True" dd:DragDrop.DragHandler="{Binding ListTasksTodo}" Name="lv_todo" HorizontalAlignment="Left" Height="470" Margin="14,49,0,0" VerticalAlignment="Top" Width="370" SelectionMode="Single">
             <ListView.View>
                 <GridView>
+                    <GridViewColumn Header="Crea. Date" Width="70px" DisplayMemberBinding="{Binding CreateDate}"/>
+                    <GridViewColumn Header="Task" Width="230px" DisplayMemberBinding="{Binding Note}"/>
                     <GridViewColumn Header="DeadLine" Width="70px" DisplayMemberBinding="{Binding DeadLine}"/>
-                    <GridViewColumn Header="Task" Width="120px" DisplayMemberBinding="{Binding Note}"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <Label Content="In Progress" HorizontalAlignment="Left" Margin="337,10,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
-        <ListView Name="lv_inProgress" HorizontalAlignment="Left" Height="360" Margin="237,49,0,0" VerticalAlignment="Top" Width="320" SelectionMode="Single">
+        <Label Content="In Progress" HorizontalAlignment="Left" Margin="555,10,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
+        <ListView dd:DragDrop.IsDropTarget="True" dd:DragDrop.DragHandler="{Binding ListTasksInProgress}" Name="lv_inProgress" HorizontalAlignment="Left" Height="470" Margin="421,49,0,0" VerticalAlignment="Top" Width="370" SelectionMode="Single">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Deadline" Width="70px" DisplayMemberBinding="{Binding DeadLine}"/>
-                    <GridViewColumn Header="Task" Width="250px" DisplayMemberBinding="{Binding Note}"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <Label Content="Done" HorizontalAlignment="Left" Margin="657,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" RenderTransformOrigin="1.159,0.416"/>
-        <ListView Name="lv_done" HorizontalAlignment="Left" Height="360" Margin="592,49,0,0" VerticalAlignment="Top" Width="190" SelectionMode="Single">
-            <ListView.View>
-                <GridView>
+                    <GridViewColumn Header="Crea. Date" Width="70px" DisplayMemberBinding="{Binding CreateDate}"/>
+                    <GridViewColumn Header="Task" Width="230px" DisplayMemberBinding="{Binding Note}"/>
                     <GridViewColumn Header="DeadLine" Width="70px" DisplayMemberBinding="{Binding DeadLine}"/>
-                    <GridViewColumn Header="Task" Width="120px" DisplayMemberBinding="{Binding Note}"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Click="Add_Click" Content="Add task" HorizontalAlignment="Left" Margin="10,433,0,0" VerticalAlignment="Top" Width="90" Height="35"/>
-        <Button Click="Delete_Click" Content="Delete" HorizontalAlignment="Left" Margin="692,433,0,0" VerticalAlignment="Top" Width="90" Height="35"/>
-        <Button Click="Update_Click" Content="Edit" HorizontalAlignment="Left" Margin="178,433,0,0" VerticalAlignment="Top" Width="90" Height="35"/>
-        <Button Click="FromToDoToProgress_Click" Content="&gt;" HorizontalAlignment="Left" Margin="208,119,0,0" VerticalAlignment="Top" Width="20" Height="20"/>
-        <Button Click="FromProgressToToDo_Click" Content="&lt;" HorizontalAlignment="Left" Margin="208,150,0,0" VerticalAlignment="Top" Width="20" Height="20"/>
-        <Button Click="FromProgressToDone_Click" Content="&gt;" HorizontalAlignment="Left" Margin="565,119,0,0" VerticalAlignment="Top" Width="20" Height="20"/>
-        <Button Click="FromDoneToProgress_Click" Content="&lt;" HorizontalAlignment="Left" Margin="565,150,0,0" VerticalAlignment="Top" Width="20" Height="20"/>
+        <Label Content="Done" HorizontalAlignment="Left" Margin="978,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" RenderTransformOrigin="1.159,0.416"/>
+        <ListView Name="lv_done" HorizontalAlignment="Left" Height="470" Margin="826,49,0,0" VerticalAlignment="Top" Width="350" SelectionMode="Single">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Crea. Date" Width="70px" DisplayMemberBinding="{Binding CreateDate}"/>
+                    <GridViewColumn Header="Task" Width="230px" DisplayMemberBinding="{Binding Note}"/>
+                    <GridViewColumn Header="DeadLine" Width="70px" DisplayMemberBinding="{Binding DeadLine}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Click="Add_Click" Content="Add task" HorizontalAlignment="Left" Margin="14,524,0,0" VerticalAlignment="Top" Width="90" Height="35"/>
+        <Button Click="Delete_Click" Content="Delete" HorizontalAlignment="Left" Margin="294,524,0,0" VerticalAlignment="Top" Width="90" Height="35"/>
+        <Button Click="Update_Click" Content="Edit" HorizontalAlignment="Left" Margin="153,524,0,0" VerticalAlignment="Top" Width="90" Height="35"/>
+        <Button Click="FromToDoToProgress_Click" Content="&gt;" HorizontalAlignment="Left" Margin="392,119,0,0" VerticalAlignment="Top" Width="20" Height="20"/>
+        <Button Click="FromProgressToToDo_Click" Content="&lt;" HorizontalAlignment="Left" Margin="392,150,0,0" VerticalAlignment="Top" Width="20" Height="20"/>
+        <Button Click="FromProgressToDone_Click" Content="&gt;" HorizontalAlignment="Left" Margin="798,119,0,0" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="5.15,0.35"/>
+        <Button Click="FromDoneToProgress_Click" Content="&lt;" HorizontalAlignment="Left" Margin="798,150,0,0" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="4.25,0.375"/>
+        <Button Click="Logout_Click" Content="Logout" HorizontalAlignment="Left" Margin="1086,524,0,0" VerticalAlignment="Top" Width="90" Height="35"/>
     </Grid>
 </Window>

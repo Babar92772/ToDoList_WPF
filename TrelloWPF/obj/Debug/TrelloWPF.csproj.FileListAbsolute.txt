@@ -113,3 +113,6 @@ F:\Github\ToDoListWPF\TrelloWPF\obj\Debug\TrelloWPF.csproj.CoreCompileInputs.cac
 F:\Github\ToDoListWPF\TrelloWPF\obj\Debug\TrelloWPF.csproj.CopyComplete
 F:\Github\ToDoListWPF\TrelloWPF\obj\Debug\TrelloWPF.exe
 F:\Github\ToDoListWPF\TrelloWPF\obj\Debug\TrelloWPF.pdb
+C:\Users\Diginamic\Desktop\ToDoList_WPF\TrelloWPF\bin\Debug\GongSolutions.Wpf.DragDrop.dll
+C:\Users\Diginamic\Desktop\ToDoList_WPF\TrelloWPF\bin\Debug\GongSolutions.Wpf.DragDrop.pdb
+C:\Users\Diginamic\Desktop\ToDoList_WPF\TrelloWPF\bin\Debug\GongSolutions.Wpf.DragDrop.xml

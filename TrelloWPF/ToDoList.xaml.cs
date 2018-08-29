@@ -103,6 +103,12 @@ namespace TrelloWPF
             }
         }
 
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            Session.CurrentUser = null;
+            this.Close();
+        }
+
         private void RefreshList()
         {
             allTasks = DB.GetTasks().ToList();

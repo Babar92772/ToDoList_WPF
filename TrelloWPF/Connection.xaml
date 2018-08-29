@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TrelloWPF"
         mc:Ignorable="d"
-        Title="Connection" Height="450" Width="450">
+        Title="Connection" Height="460" Width="460">
     <Grid Name="Grid_Main">
     </Grid>
 </Window>
