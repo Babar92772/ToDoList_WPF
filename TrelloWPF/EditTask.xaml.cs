@@ -37,11 +37,22 @@ namespace TrelloWPF
 
         private void Update_Click(object sender, RoutedEventArgs e)
         {
-            this.tasks.DeadLine = Convert.ToDateTime(this.dp_deadline.Text);
-            this.tasks.Note = this.tb_note.Text;
-            DB.EditTask(this.tasks);
-            this._OCTasks[this._position] = tasks;
-            this.Close();
+            if (this.dp_deadline.Text != "")
+            {
+                this.tasks.DeadLine = Convert.ToDateTime(this.dp_deadline.Text);
+            }
+            if (this.tb_note.Text != "")
+            {
+                this.tasks.Note = this.tb_note.Text;
+                DB.EditTask(this.tasks);
+                this._OCTasks[this._position] = tasks;
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Note is mandatory");
+            }
+           
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)

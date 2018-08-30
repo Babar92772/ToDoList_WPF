@@ -25,27 +25,33 @@ namespace TrelloWPF
         public AddTask(ObservableCollection<Tasks> tasks)
         {
             InitializeComponent();
-            this.dp_deadline.Text = DateTime.Now.ToShortDateString(); 
-            this.tb_note.Text = "One task";
+            //this.dp_deadline.Text = DateTime.Now.ToShortDateString(); 
+            //this.tb_note.Text = "One task";
             this._listTasksToDo = tasks;
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            Tasks tasks = new Tasks
+            if (this.tb_note.Text != "")
             {
-                Comments = new List<Comments>(),
-                DeadLine = this.dp_deadline.SelectedDate,
-                IDUserCreator = Session.CurrentUser.ID,
-                Note = this.tb_note.Text,
-                TaskState = "todo",
-                Users1 = new List<Users>(),
-                CreateDate = DateTime.Now,
-            };
-
-            DB.AddTask(tasks);
-            this._listTasksToDo.Add(tasks);
-            this.Close();
+                Tasks tasks = new Tasks
+                {
+                    Comments = new List<Comments>(),
+                    DeadLine = this.dp_deadline.SelectedDate,
+                    IDUserCreator = Session.CurrentUser.ID,
+                    Note = this.tb_note.Text,
+                    TaskState = "todo",
+                    Users1 = new List<Users>(),
+                    CreateDate = DateTime.Now,
+                };
+                DB.AddTask(tasks);
+                this._listTasksToDo.Add(tasks);
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Note is mandatory");
+            }          
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)

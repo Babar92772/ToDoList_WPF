@@ -163,6 +163,10 @@ namespace TrelloWPF
                 this.listTasksInProgress.Remove(tasks);
                 this.listTasksToDo.Add(tasks);
             }
+            else
+            {
+                MessageBox.Show("Select a task");
+            }
         }
 
         private void FromProgressToDone_Click(object sender, RoutedEventArgs e)

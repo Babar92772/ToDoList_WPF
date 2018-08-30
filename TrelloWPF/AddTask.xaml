@@ -5,18 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TrelloWPF"
         mc:Ignorable="d"
-        Title="AddTask" Height="510" Width="524" FontSize="18">
-    <Grid>
+        Title="AddTask" Height="510" Width="524" FontSize="18" ResizeMode="NoResize">
+    <Grid Background="#FFE0AA09">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
         <Label Content="DeadLine :" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.684,1.753" Height="34" Width="93"/>
         <DatePicker Name="dp_deadline" HorizontalAlignment="Left" Margin="108,12,0,0" VerticalAlignment="Top" Width="203" Height="32"/>
-        <Label Content="Note :" HorizontalAlignment="Left" Margin="27,64,0,0" VerticalAlignment="Top" Width="93"/>
-        <Button Click="Add_Click" Content="Add" HorizontalAlignment="Left" Margin="27,435,0,0" VerticalAlignment="Top" Width="130" Height="30"/>
-        <Button Click="Cancel_Click" Content="Cancel" HorizontalAlignment="Left" Margin="370,435,0,0" VerticalAlignment="Top" Width="129" Height="30"/>
-        <TextBox Name="tb_note" Height="327" Margin="10,103,0,0" TextWrapping="Wrap" Width="472" HorizontalContentAlignment="Stretch" AcceptsReturn="True" VerticalAlignment="Top"/>
+        <Label Content="Note :" HorizontalAlignment="Left" Margin="9,61,0,0" VerticalAlignment="Top" Width="93"/>
+        <Button Click="Add_Click" Content="Add" HorizontalAlignment="Left" Margin="9,432,0,0" VerticalAlignment="Top" Width="130" Height="30"/>
+        <Button Click="Cancel_Click" Content="Cancel" HorizontalAlignment="Left" VerticalAlignment="Top" Width="129" Height="30" Margin="379,432,0,0"/>
+        <TextBox Name="tb_note" Height="327" Margin="10,100,10,0" TextWrapping="Wrap" HorizontalContentAlignment="Stretch" AcceptsReturn="True" VerticalAlignment="Top" Background="#FFF9EBBB"/>
 
     </Grid>
 </Window>

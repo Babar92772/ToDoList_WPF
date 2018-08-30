@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TrelloWPF"
         mc:Ignorable="d"
-        Title="ToDo List" Height="350" Width="350" FontSize="20">
-    <Grid Name="Grid_Main">
-        <Button Click="SignIn_Click" Content="Sign In" Margin="96,70,96,0" VerticalAlignment="Top" Width="140" Height="60"/>
-        <Button Click="SignUp_Click" Content="Sign Up" HorizontalAlignment="Left" Margin="101,185,0,0" VerticalAlignment="Top" Width="140" Height="60"/>
+        Title="ToDo List" Height="350" Width="350" FontSize="20" ResizeMode="NoResize">
+    <Grid Name="Grid_Main" Background="#FFE0AA09">
+        <Image Source="./IMG/logo.png" Margin="122,28,122,193" />
+        <Button Click="SignIn_Click" Content="Sign In" HorizontalAlignment="Left" VerticalAlignment="Top" Width="140" Height="60" FontSize="20" Margin="102,133,0,0"/>
+        <Button Click="SignUp_Click" Content="Sign Up" HorizontalAlignment="Left" VerticalAlignment="Top" Width="140" Height="60" FontSize="20" Margin="102,229,0,0"/>
     </Grid>
 </Window>
