@@ -33,15 +33,28 @@ namespace TrelloWPF.UserControls
 
             if (tb_password1.Password == tb_password2.Password && tb_mail.Text != "" && tb_pseudo.Text != "")
             {
-                DB.AddUser(tb_pseudo.Text, tb_mail.Text, tb_password1.Password);
+                Users user = DB.GetCurrentUser(tb_pseudo.Text, tb_password1.Password);
                 Thread.Sleep(300);
-                Users users = DB.GetCurrentUser(tb_pseudo.Text, tb_password1.Password) ;
-                if (users != null)
+                if (user == null)
                 {
-                    Session.CurrentUser = users;
-                    Window window_ToDoList = new ToDoList();
-                    myWindow.Close();
-                    window_ToDoList.ShowDialog();
+                    DB.AddUser(tb_pseudo.Text, tb_mail.Text, tb_password1.Password);
+                    Thread.Sleep(300);
+                    Users users = DB.GetCurrentUser(tb_pseudo.Text, tb_password1.Password);
+                    if (users != null)
+                    {
+                        Session.CurrentUser = users;
+                        Window window_ToDoList = new ToDoList();
+                        myWindow.Close();
+                        window_ToDoList.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error server");
+                    }
+                }      
+                else
+                {
+                    MessageBox.Show("Already taken");
                 }
             }
             else
